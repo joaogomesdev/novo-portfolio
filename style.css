@@ -1,0 +1,924 @@
+/* =========================================================================
+   PORTFÓLIO PROFISSIONAL — ESTRUTURA E IDENTIDADE VISUAL
+   CSS3 Puro | Minimalista, Tecnológico e Editorial
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. VARIÁVEIS GLOBAIS (:ROOT) & RESET
+   ------------------------------------------------------------------------- */
+:root {
+  /* Paleta de Cores */
+  --bg-primary: #F7F6F2;       /* Off-white */
+  --bg-surface: #FFFFFF;       /* Branco */
+  --bg-dark: #102A46;          /* Azul profundo */
+  --color-primary: #193B63;    /* Azul-marinho */
+  --color-secondary: #285A8E;  /* Azul intermediário */
+  --color-light: #DCEAF7;      /* Azul claro */
+  --color-text-main: #171717;  /* Preto suave */
+  --color-text-muted: #525866; /* Cinza para textos secundários */
+  --color-border: #E2E4E9;     /* Divisórias claras */
+  --color-border-dark: #1E4675;/* Divisórias em fundo escuro */
+  --color-success: #10B981;    /* Indicador ativo */
+
+  /* Tipografia */
+  --font-main: 'Inter', 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Dimensões */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+  /* Efeitos */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-subtle: 0 4px 20px rgba(25, 59, 99, 0.05);
+  --shadow-hover: 0 12px 32px rgba(25, 59, 99, 0.1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   2. REGRAS GERAIS DE COMPONENTES & SEÇÕES
+   ------------------------------------------------------------------------- */
+section {
+  padding: 100px 24px;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-secondary);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--bg-surface);
+}
+
+.btn-primary:hover {
+  background-color: var(--bg-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(25, 59, 99, 0.25);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-light);
+  transform: translateY(-2px);
+}
+
+.image-placeholder {
+  width: 100%;
+  background-color: var(--color-light);
+  border: 1px dashed var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 16px;
+}
+
+.portrait-shape {
+  height: 380px;
+  border-radius: var(--border-radius-md);
+}
+
+.project-media-shape {
+  height: 220px;
+}
+
+/* -------------------------------------------------------------------------
+   3. HEADER & NAVEGAÇÃO
+   ------------------------------------------------------------------------- */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  background-color: rgba(247, 246, 242, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(25, 59, 99, 0.08);
+}
+
+.header-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary);
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: transform var(--transition-fast);
+}
+
+.hamburger::before { top: -6px; }
+.hamburger::after { bottom: -6px; }
+
+.main-nav.active {
+  display: block;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 24px;
+  box-shadow: var(--shadow-hover);
+}
+
+.main-nav.active .nav-list {
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* -------------------------------------------------------------------------
+   4. HERO / APRESENTAÇÃO INICIAL
+   ------------------------------------------------------------------------- */
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(220, 234, 247, 0.3) 100%);
+}
+
+.hero-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-success);
+  border-radius: 50%;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  max-width: 900px;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  max-width: 760px;
+  margin-bottom: 16px;
+}
+
+.hero-location {
+  font-size: 0.95rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+}
+
+/* -------------------------------------------------------------------------
+   5. SOBRE MIM
+   ------------------------------------------------------------------------- */
+.about-section {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 64px;
+}
+
+.about-bio .bio-paragraph {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.about-pillars {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.pillars-title {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+}
+
+.pillars-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.pillar-item {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  position: relative;
+  padding-left: 20px;
+}
+
+.pillar-item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+.pillar-item strong {
+  color: var(--color-text-main);
+}
+
+/* -------------------------------------------------------------------------
+   ENQUADRAMENTO DA FOTO & SEÇÃO SOBRE MIM (CORRIGIDO)
+   ------------------------------------------------------------------------- */
+.about-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start; /* Impede que o container da foto estique para acompanhar a altura do texto */
+}
+
+.about-portrait {
+  width: 100%;
+  max-width: 320px;
+  height: 400px; /* Define uma altura fixa proporcional para o container da foto */
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: var(--color-light);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-normal);
+}
+
+.about-portrait:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-hover);
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta a imagem preenchendo a caixa sem esticar */
+  object-position: center 20%; /* Ajusta a posição vertical para focar no rosto */
+  display: block;
+}
+
+/* -------------------------------------------------------------------------
+   6. ESPECIALIDADES E COMPETÊNCIAS
+   ------------------------------------------------------------------------- */
+.skills-section {
+  background-color: var(--bg-primary);
+}
+
+.skills-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.skill-card {
+  background-color: var(--bg-surface);
+  padding: 36px 28px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-hover);
+}
+
+.skill-card-header {
+  margin-bottom: 16px;
+}
+
+.skill-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.skill-title {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.skill-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.skill-tech-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.skill-tech-list li {
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* -------------------------------------------------------------------------
+   7. PROJETOS E TRABALHOS
+   ------------------------------------------------------------------------- */
+.projects-section {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.projects-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-secondary);
+}
+
+.project-media {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-content {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.category-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-role {
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+  margin-bottom: 12px;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.project-tags li {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--bg-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-links {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-link {
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.project-link:hover {
+  color: var(--color-secondary);
+}
+
+/* -------------------------------------------------------------------------
+   8. EXPERIÊNCIA PROFISSIONAL
+   ------------------------------------------------------------------------- */
+.experience-section {
+  background-color: var(--bg-primary);
+}
+
+.experience-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience-timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-color: var(--color-light);
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: -37px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 3px solid var(--color-primary);
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.role-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.company-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.period-text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.experience-details {
+  list-style: none;
+}
+
+.experience-details li {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.experience-details li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+}
+
+/* -------------------------------------------------------------------------
+   9. FORMAÇÃO ACADÊMICA & CERTIFICAÇÕES
+   ------------------------------------------------------------------------- */
+.education-section {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.education-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-light);
+}
+
+.education-item {
+  background-color: var(--bg-primary);
+  padding: 24px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.course-name {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.institution-name {
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.status-tag {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.certifications-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.certification-item {
+  padding: 16px 20px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.cert-issuer {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.cert-year {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* -------------------------------------------------------------------------
+   10. SEÇÃO DE REDES SOCIAIS
+   ------------------------------------------------------------------------- */
+.contact-section {
+  background-color: var(--bg-dark);
+  color: var(--bg-surface);
+}
+
+.contact-section .section-tag {
+  color: var(--color-light);
+}
+
+.contact-section .section-title {
+  color: var(--bg-surface);
+}
+
+.contact-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.social-card:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-light);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon-box {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(220, 234, 247, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.social-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bg-surface);
+}
+
+.social-action {
+  font-size: 0.8rem;
+  color: var(--color-light);
+  opacity: 0.8;
+}
+
+/* -------------------------------------------------------------------------
+   11. RODAPÉ (FOOTER)
+   ------------------------------------------------------------------------- */
+.main-footer {
+  background-color: #0B1D32;
+  color: var(--color-light);
+  padding: 32px 24px;
+  border-top: 1px solid var(--color-border-dark);
+  font-size: 0.85rem;
+}
+
+.footer-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-to-top {
+  text-decoration: none;
+  color: var(--color-light);
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.back-to-top:hover {
+  color: var(--bg-surface);
+}
+
+/* -------------------------------------------------------------------------
+   12. ANIMATION REVEAL & RESPONSIVIDADE
+   ------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 992px) {
+  .about-content,
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-list { display: none; }
+  .menu-toggle { display: block; }
+  .hero-cta-group { flex-direction: column; }
+  .btn { width: 100%; }
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
